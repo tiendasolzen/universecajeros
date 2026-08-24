@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Universe Game 🎰</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '931544996692647');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=931544996692647&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+  :root {
+    --bg-deep: #1a0f2e;
+    --bg-mid: #2d1b4e;
+    --accent-green: #2ecc71;
+    --accent-green-light: #4ade80;
+    --text-primary: #ffffff;
+    --text-muted: #c9bfe0;
+    --panel-border: rgba(168, 122, 255, 0.35);
+    --panel-bg: rgba(255, 255, 255, 0.03);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(ellipse at top, var(--bg-mid) 0%, var(--bg-deep) 70%);
+    color: var(--text-primary);
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 4vh, 48px) 20px;
+    overflow: hidden;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 2.2vh, 20px);
+  }
+
+  /* Logo 1 - estático */
+  .logo-primary {
+    width: 100%;
+    max-width: min(320px, 60vh);
+    aspect-ratio: 320 / 130;
+    background: transparent;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 1;
+  }
+
+  .logo-primary img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .eyebrow {
+    font-size: clamp(13px, 3.2vw, 16px);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  /* Logo 2 - con movimiento suave */
+  .logo-secondary-wrap {
+    width: 100%;
+    max-width: min(320px, 40vh);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 1;
+  }
+
+  .logo-secondary {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: float 3.4s ease-in-out infinite;
+  }
+
+  .logo-secondary img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .instruction {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text-primary);
+    font-size: clamp(13px, 3vw, 15px);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .name-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--panel-border);
+    color: var(--text-primary);
+    font-size: 16px;
+    padding: clamp(10px, 2vh, 16px) 20px;
+    border-radius: 999px;
+    outline: none;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .name-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .name-input:focus {
+    border-color: var(--accent-green-light);
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+  }
+
+  /* Botón CTA con movimiento */
+  .cta-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(120deg, #22c55e 0%, #4ade80 55%, #86efac 100%);
+    color: #0b2e18;
+    font-size: clamp(15px, 3.6vh, 19px);
+    font-weight: 800;
+    text-align: center;
+    line-height: 1.25;
+    padding: clamp(14px, 2.6vh, 20px) 28px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    text-decoration: none;
+    flex-shrink: 0;
+    box-shadow: 0 0 24px rgba(74, 222, 128, 0.35);
+    animation: float 3.4s ease-in-out infinite;
+    animation-delay: 0.15s;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-button:hover {
+    box-shadow: 0 0 32px rgba(74, 222, 128, 0.5);
+  }
+
+  .cta-button:active {
+    transform: scale(0.97);
+  }
+
+  .cta-button svg {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Respeta preferencia de reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .logo-secondary,
+    .cta-button {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .card {
+      gap: 16px;
+    }
+    .cta-button {
+      padding: 18px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- LOGO 1: reemplazar por el logo principal (estático) -->
+    <div class="logo-primary" id="logoPrimary">
+      <img src="https://universegame.co/logouniverse.png" alt="Logo">
+    </div>
+
+    <!-- LOGO 2: reemplazar por el segundo logo (con animación flotante) -->
+    <div class="logo-secondary-wrap">
+      <div class="logo-secondary" id="logoSecondary">
+        <img src="https://ganamos24.vercel.app/superbono.png" alt="Logo secundario">
+      </div>
+    </div>
+
+    <p class="instruction">Escribinos apretando el botón de abajo</p>
+
+    <input
+      type="text"
+      class="name-input"
+      id="nameInput"
+      placeholder="Ingresa tu nombre"
+      autocomplete="off"
+    >
+
+    <a href="#" class="cta-button" id="ctaButton">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.83 14.05c-.24.68-1.4 1.32-1.93 1.36-.53.05-1.02.24-3.43-.71-2.9-1.15-4.77-4.1-4.91-4.29-.14-.19-1.17-1.55-1.17-2.96s.73-2.1.99-2.39c.26-.29.57-.36.76-.36.19 0 .38 0 .55.01.18.01.42-.07.65.5.24.58.82 2 .89 2.14.07.15.12.32.02.51-.1.19-.15.31-.29.48-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.13.63-.05.17-.19.72-.84.92-1.13.19-.29.39-.24.65-.14.27.1 1.69.8 1.98.94.29.15.48.22.55.34.07.13.07.75-.17 1.43z"/>
+      </svg>
+      <span>EMPEZA A GENERAR INGRESOS<br>AHORA</span>
+    </a>
+
+  </div>
+
+<script>
+  // Reemplazá con tu número real y (opcional) mensaje predefinido
+  const WHATSAPP_NUMBER = '5491100000000'; // formato: código país + número, sin +
+  const ctaButton = document.getElementById('ctaButton');
+  const nameInput = document.getElementById('nameInput');
+
+  ctaButton.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    // Evento de Meta Pixel (Lead) — se dispara al hacer clic en el botón de WhatsApp
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {
+        content_name: 'boton_whatsapp',
+        content_category: 'landing_gaming'
+      });
+    }
+
+    const name = nameInput.value.trim();
+    const message = name
+      ? `Hola! Soy ${name} y quiero ser cajero.`
+      : 'Hola! Quiero ser cajero.';
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.location.href = url;
+  });
+</script>
+
+</body>
+</html>
