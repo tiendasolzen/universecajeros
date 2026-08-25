@@ -223,6 +223,153 @@ src="https://www.facebook.com/tr?id=931544996692647&ev=PageView&noscript=1"
       padding: 18px 20px;
     }
   }
+  .cashier-info {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(7px, 1.2vh, 11px);
+  flex-shrink: 1;
+}
+
+/* Título */
+.cashier-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.cashier-title span {
+  font-size: clamp(24px, 6vw, 32px);
+}
+
+.cashier-title div {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.cashier-title small {
+  font-size: clamp(10px, 2.4vw, 12px);
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent-green-light);
+  margin-bottom: 4px;
+}
+
+.cashier-title strong {
+  font-size: clamp(21px, 5.5vw, 28px);
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+/* Comisión */
+.commission {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  line-height: .9;
+  margin: 2px 0;
+}
+
+.commission strong {
+  font-size: clamp(48px, 13vw, 68px);
+  font-weight: 950;
+  letter-spacing: -3px;
+  background: linear-gradient(180deg, #fff4a3, #ffd23c, #d99a08);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 205, 50, .3));
+}
+
+.commission span {
+  font-size: clamp(15px, 3.8vw, 20px);
+  font-weight: 900;
+  color: #ffd84a;
+}
+
+/* Beneficios */
+.benefits {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.benefit {
+  min-height: clamp(39px, 5vh, 48px);
+  padding: 7px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, .13),
+    rgba(255, 255, 255, .025)
+  );
+
+  border: 1px solid rgba(74, 222, 128, .45);
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(46, 204, 113, .08);
+}
+
+.benefit b {
+  color: #4ade80;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.benefit span {
+  font-size: clamp(10px, 2.5vw, 12px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+}
+
+/* Frase principal */
+.benefit:last-child {
+  grid-column: 1 / -1;
+  background: linear-gradient(
+    90deg,
+    rgba(46, 204, 113, .16),
+    rgba(74, 222, 128, .05)
+  );
+}
+
+@media (max-width: 380px) {
+  .cashier-info {
+    gap: 6px;
+  }
+
+  .benefits {
+    gap: 5px;
+  }
+
+  .benefit {
+    padding: 6px 7px;
+    min-height: 36px;
+  }
+
+  .benefit span {
+    font-size: 9.5px;
+  }
+
+  .commission strong {
+    font-size: 46px;
+  }
+
+  .cashier-title strong {
+    font-size: 20px;
+  }
+}
 </style>
 </head>
 <body>
@@ -234,12 +381,45 @@ src="https://www.facebook.com/tr?id=931544996692647&ev=PageView&noscript=1"
       <img src="https://universegame.co/logouniverse.png" alt="Logo">
     </div>
 
-    <!-- LOGO 2: reemplazar por el segundo logo (con animación flotante) -->
-    <div class="logo-secondary-wrap">
-      <div class="logo-secondary" id="logoSecondary">
-        <img src="https://i.imgur.com/wnjlyef.jpeg" alt="Logo secundario">
-      </div>
+<!-- INFORMACIÓN PARA CAJEROS -->
+<div class="cashier-info">
+
+  <div class="cashier-title">
+    <span>💰</span>
+    <div>
+      <small>OPORTUNIDAD</small>
+      <strong>BUSCAMOS CAJEROS</strong>
     </div>
+  </div>
+
+  <div class="commission">
+    <strong>50%</strong>
+    <span>DE COMISIÓN</span>
+  </div>
+
+  <div class="benefits">
+    <div class="benefit">
+      <b>✓</b>
+      <span>SIN RECUPERO</span>
+    </div>
+
+    <div class="benefit">
+      <b>✓</b>
+      <span>PAGOS EN EL ACTO</span>
+    </div>
+
+    <div class="benefit">
+      <b>✓</b>
+      <span>HASTA $1.000.000 POR DÍA</span>
+    </div>
+
+    <div class="benefit">
+      <b>✓</b>
+      <span>GENERÁ INGRESOS DESDE TU CASA</span>
+    </div>
+  </div>
+
+</div>
 
     <p class="instruction">Escribinos apretando el botón de abajo</p>
 
